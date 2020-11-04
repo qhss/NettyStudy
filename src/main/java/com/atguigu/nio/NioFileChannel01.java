@@ -4,6 +4,10 @@ import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * 将字符串写入到文件中
+ * 将字符串存到buffer，再写入到channnel中
+ */
 public class NioFileChannel01 {
     public static void main(String[] args) throws Exception {
         String str="hello world";

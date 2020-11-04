@@ -6,6 +6,10 @@ import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * 将文件的数据入到程序中
+ *将channel中的文件读取到buffer中
+ */
 public class NioFileChannel02 {
     public static void main(String[] args) throws Exception {
         //创建文件输入流
