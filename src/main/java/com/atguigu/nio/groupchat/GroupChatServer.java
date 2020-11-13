@@ -47,6 +47,7 @@ public class GroupChatServer {
                         //监听到accept
                         if (key.isAcceptable()){
                             SocketChannel sc = listenChannel.accept();
+                            sc.configureBlocking(false);
                             //将sc注册到selector上
                             sc.register(selector, SelectionKey.OP_READ);
                             //提示
@@ -61,7 +62,7 @@ public class GroupChatServer {
 
                     }
                 }else{
-                    System.out.println("等待中");
+//                    System.out.println("等待中");
                 }
             }
 
@@ -109,7 +110,7 @@ public class GroupChatServer {
     private void sendInfoToOtherClients(String msg,SocketChannel self) throws IOException {
         System.out.println("服务器转发消息中。。。。");
         //遍历所有注册到selectpr上的SocketChannel,并排除自己（self）
-        for (SelectionKey key:selector.selectedKeys()){
+        for (SelectionKey key:selector.keys()){
             //通过key取出对应的socketChannel
             Channel targerChannel = key.channel();
             //排除自己
@@ -125,8 +126,17 @@ public class GroupChatServer {
         }
 
     }
+
+    /**
+     * ServerSocketChannel()
+     * selector
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
+        GroupChatServer chatServer = new GroupChatServer();
+        chatServer.listen();
 
     }
 }
