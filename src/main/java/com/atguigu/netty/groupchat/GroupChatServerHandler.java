@@ -48,7 +48,12 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
         System.out.println("当前channelGroup大小 ：" + channelGroup.size());
     }
 
-
+    /**
+     *
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
     //读取数据，并进行消息转发
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
