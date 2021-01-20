@@ -10,7 +10,7 @@ public class NIOClient {
         SocketChannel socketChannel = SocketChannel.open();
         //设置为非阻塞
         socketChannel.configureBlocking(false);
-        //提供服务器端的ip和端口号
+        //提供服务器端的ip和端口号实践
         InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 6666);
         //连接服务器
         if (!socketChannel.connect(inetSocketAddress)){

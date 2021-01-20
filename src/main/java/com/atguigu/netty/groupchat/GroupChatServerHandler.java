@@ -49,7 +49,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
     }
 
     /**
-     *
+     *　
      * @param ctx
      * @param msg
      * @throws Exception

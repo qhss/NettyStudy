@@ -20,7 +20,7 @@ public class GroupChatServer {
             selector=Selector.open();
             //得到ServerSocketChannel
             listenChannel=ServerSocketChannel.open();
-            //绑定端口
+            //绑定端口6667
             listenChannel.socket().bind(new InetSocketAddress(port));
             //设置为非阻塞
             listenChannel.configureBlocking(false);
@@ -35,7 +35,7 @@ public class GroupChatServer {
     public void listen(){
         try {
 
-            //循环处理
+            //进行循环处理
             while(true){
                 int count = selector.select(2000);
                 if (count>0){//有事件要处理
@@ -54,7 +54,7 @@ public class GroupChatServer {
                             System.out.println(sc.getRemoteAddress()+"上线");
                         }
                         if (key.isReadable()){//通道发生read事件，即通道是可读状态
-                            //处理读（专门写方法）
+                            //处理读事件（专门写方法）
                             readData(key);
                         }
                         //手动从集合中移除当前的selectionKey,防止重复操作

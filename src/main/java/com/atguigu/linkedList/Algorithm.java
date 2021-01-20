@@ -104,40 +104,14 @@ public class Algorithm {
         }
         return result;
     }
+
+
     /**
      * 三数求和问题（leetcode第十五题）
      *双指针方式
      *时间复杂度为O(n^2)
      *i为最左侧元素（最小数）lo为左指针，hi为右指针
      **/
-//    public List<List<Integer>> threeSum2(int[] num) {
-//        Arrays.sort(num);
-//        List<List<Integer>> res = new LinkedList<>();
-//        for (int i = 0; i < num.length-2; i++) {
-//            //判断i值与上一个i值是否重复
-//            if (i == 0 || (i > 0 && num[i] != num[i-1])) {
-//                int lo = i+1, hi = num.length-1, sum = 0 - num[i];
-//                while (lo < hi) {
-//                    if (num[lo] + num[hi] == sum) {
-//                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
-//                        while (lo < hi && num[lo] == num[lo+1]) lo++;
-//                        while (lo < hi && num[hi] == num[hi-1]) hi--;
-//                        lo++; hi--;
-//                    }
-//                    else if (num[lo] + num[hi] < sum) lo++;
-//                    else hi--;
-//                }
-//            }
-//        }
-//        return res;
-//    }
-
-    /**复杂度O(n^2)
-     * 三数之和
-     *
-     * @param num
-     * @return
-     */
     public List<List<Integer>> threeSums(int[] num){
         Arrays.sort(num);
         List<List<Integer>> res = new LinkedList<>();

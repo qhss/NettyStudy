@@ -13,19 +13,18 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
-        //创建BossGroup和WorkerGroup
         //说明：
-        //1.创建两个线程组
+        //1.创建两个线程池组bossGroup和workerGroup
         //2.bossGroup只是处理连接请求，真正的客户端的业务处理会交给workerGroup
         //3.两个都是无限循环
         //4、bossGroup 和 workerGroup 含有的子线程（NioEventLoop）个数为实际 cpu 核数 * 2
+        //handler只用来响应事件，不做具体的业务处理
 
             NioEventLoopGroup bossGroup = new NioEventLoopGroup();
             NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            //创建服务器端的启动对象，配置启动参数
+            //创建服务器端的启动对象，配置启动参数，
             ServerBootstrap bootstrap = new ServerBootstrap();
-
             //使用链式编程，进行设置
             bootstrap.group(bossGroup, workerGroup)//设置两个线程组
                     .channel(NioServerSocketChannel.class)//使用NioServerSocketChannel作为服务器端的通道实现

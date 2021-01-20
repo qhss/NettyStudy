@@ -81,7 +81,7 @@ public class GroupChatClient {
                 while(true){
                     chatClient.readInfo();
                     try {
-                        Thread.currentThread().sleep(1000);
+                     Thread.currentThread().sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

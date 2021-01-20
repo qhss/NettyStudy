@@ -18,9 +18,12 @@ public class GroupChatServer {
         this.port=port;
     }
     public  void run() throws InterruptedException {
+        //主
         NioEventLoopGroup bossGroup=new NioEventLoopGroup(1);
+        //从
         NioEventLoopGroup workerGroup=new NioEventLoopGroup();
         try {
+            //启动引导类
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
@@ -29,8 +32,9 @@ public class GroupChatServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
+
                             ChannelPipeline pipeline = socketChannel.pipeline();
-                            pipeline.addLast("decoder",new StringDecoder());//加入解码器
+                            pipeline.addLast("decoder",new StringDecoder());//加入编码器
                             pipeline.addLast("encoder",new StringEncoder());//加入编码器
                             pipeline.addLast(new GroupChatServerHandler());
                         }
